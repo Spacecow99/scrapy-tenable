@@ -67,9 +67,9 @@ CONCURRENT_REQUESTS_PER_DOMAIN = 8
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "scrapy_tenable.pipelines.ScrapyTenablePipeline": 300,
-#}
+ITEM_PIPELINES = {
+   'scrapy_tenable.pipelines.MongoDBPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -96,14 +96,14 @@ AUTOTHROTTLE_ENABLED = True
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
-FEEDS = {
-    pathlib.Path(f"plugin_details_{_PRESENT_DATE}.jsonl"): {
-        "format": "jsonl",
-        "store_empty": False,
-    },
-}
+# FEEDS = {
+#     pathlib.Path(f"plugin_details_{_PRESENT_DATE}.jsonl"): {
+#         "format": "jsonl",
+#         "store_empty": False,
+#     },
+# }
 LOG_FILE = pathlib.Path(f"scrapy_tenable_{_PRESENT_DATE}.log")
-LOG_LEVEL = "DEBUG"
+LOG_LEVEL = "INFO"
 LOG_STDOUT = True
 LOG_FORMATTER = "scrapy_tenable.loggers.QuietLogFormatter"
 DUPEFILTER_DEBUG = True
