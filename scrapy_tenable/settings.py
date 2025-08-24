@@ -94,16 +94,33 @@ AUTOTHROTTLE_ENABLED = True
 
 # Set settings whose default value is deprecated to a future-proof value
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
+# Twisted reactor to use (for asyncio support)
+# See https://docs.scrapy.org/en/latest/topics/reactor.html
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
+
+# Feed settings
+# See https://docs.scrapy.org/en/latest/topics/feed-exports.html
+# Feed export encoding (e.g., utf-8, utf-16, etc.)
 FEED_EXPORT_ENCODING = "utf-8"
+# Output file path and format (e.g., json, jsonl, csv, xml, etc.)
+# Uncomment the following to enable output to a timestamped JSON Lines file
 # FEEDS = {
 #     pathlib.Path(f"plugin_details_{_PRESENT_DATE}.jsonl"): {
 #         "format": "jsonl",
 #         "store_empty": False,
 #     },
 # }
-LOG_FILE = pathlib.Path(f"scrapy_tenable_{_PRESENT_DATE}.log")
+
+# Logging settings
+# See https://docs.scrapy.org/en/latest/topics/logging.html
+# Path to log file
+LOG_FILE = str(pathlib.Path(f"scrapy_tenable_{_PRESENT_DATE}.log"))
+# Log level (e.g., CRITICAL, ERROR, WARNING, INFO, DEBUG)
 LOG_LEVEL = "INFO"
+# Redirect stdout to log file
 LOG_STDOUT = True
+# Custom log formatter to reduce log verbosity
 LOG_FORMATTER = "scrapy_tenable.loggers.QuietLogFormatter"
+# Enable showing of duplicate requests filtered by the dupefilter
+# See https://docs.scrapy.org/en/latest/topics/request-deduplication.html
 DUPEFILTER_DEBUG = True
