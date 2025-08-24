@@ -21,7 +21,7 @@ class MongoDBPipeline:
     @classmethod
     def from_crawler(cls, crawler):
         return cls(
-            mongo_uri=crawler.settings.get('MONGO_URI', 'mongodb://172.24.80.1:27017'),
+            mongo_uri=crawler.settings.get('MONGO_URI', 'mongodb://localhost:27017'),
             mongo_db=crawler.settings.get('MONGO_DATABASE', 'tenable'),
             mongo_collection=crawler.settings.get('MONGO_COLLECTION', 'plugins')
         )
